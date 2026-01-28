@@ -1,0 +1,391 @@
+/* ---------------- GLOBAL ---------------- */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------- CARD ---------------- */
+.card {
+    background: white;
+    width: 420px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+    text-align: center;
+    color: #0d47a1;
+    margin-bottom: 20px;
+}
+
+/* ---------------- INPUTS ---------------- */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #1976d2;
+}
+
+/* ---------------- BUTTON ---------------- */
+button {
+    width: 100%;
+    background: #1976d2;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0d47a1;
+}
+
+/* ---------------- LINKS ---------------- */
+a {
+    text-decoration: none;
+    color: #1976d2;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------- ERROR / FLASH ---------------- */
+.error-msg {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* ---------------- DASHBOARD ---------------- */
+.dashboard {
+    width: 90%;
+    max-width: 1000px;
+}
+
+.dashboard h2 {
+    text-align: left;
+}
+
+.dashboard-card {
+    background: #f1f7ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* ---------------- LOGOUT ---------------- */
+.logout-btn {
+    float: right;
+    background: #d32f2f;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+.logout-btn:hover {
+    background: #b71c1c;
+}
+
+/* ---------------- TABLE (ADMIN + RESULT) ---------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background: #1976d2;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f5faff;
+}
+/* -------- SIMULATION PAGE -------- */
+.info-card {
+    background: #f9fbff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-left: 6px solid #1976d2;
+}
+
+.info-card h2, .info-card h3 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background: #fff8e1;
+    border-left-color: #ff9800;
+}
+
+.success {
+    border-left-color: #2e7d32;
+    background: #e8f5e9;
+}
+
+.danger {
+    border-left-color: #c62828;
+    background: #ffebee;
+}
+
+.two-column {
+    display: flex;
+    gap: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background: #2e7d32;
+}
+
+.submit-btn:hover {
+    background: #1b5e20;
+}
+/* ================= QUESTION BOX STYLE ================= */
+
+.question-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.question-header {
+    background: #1976d2;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* Hide radio button completely */
+.option-box input[type="radio"] {
+    display: none;
+}
+
+/* Option container */
+.option-box {
+    display: block;
+    padding: 14px 18px;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 16px;
+}
+
+/* Hover effect */
+.option-box:hover {
+    background: #f1f7ff;
+    border-color: #1976d2;
+}
+
+/* Selected option */
+.option-box input[type="radio"]:checked + span {
+    font-weight: 600;
+}
+
+/* Highlight selected box (IMPORTANT) */
+.option-box:has(input[type="radio"]:checked) {
+    background: #e7f1ff;
+    border-color: #1976d2;
+}
+/* -------- TOP BAR -------- */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.top-btn {
+    background: #1976d2;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.top-btn:hover {
+    background: #0d47a1;
+}
+.success-msg {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+canvas {
+    max-width: 100%;
+    margin-top: 15px;
+}
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.exercise-box {
+    background: #e3f2fd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0d47a1;
+}
+
+.exercise-box span {
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.exercise-box:hover {
+    background: #bbdefb;
+}
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.exit-btn {
+    background: #35d6e5;
+    color: white;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.exit-btn:hover {
+    background: #c62828;
+}
+/* ---------- TOP BAR LAYOUT ---------- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ---------- NOTIFICATION BELL ---------- */
+.notification-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.bell {
+    font-size: 20px;
+}
+
+/* Red dot */
+.dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+}
+
+/* ---------- DROPDOWN ---------- */
+.notification-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 260px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Show on hover */
+.notification-wrapper:hover .notification-dropdown {
+    display: block;
+}
+
+.notification-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item p {
+    margin: 4px 0 0;
+    color: #555;
+}
+
+.empty {
+    font-size: 13px;
+    color: gray;
+    text-align: center;
+}
+

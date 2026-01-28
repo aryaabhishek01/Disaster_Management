@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ disaster }} Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page-container">
+<div class="card dashboard">
+
+<a href="/simulation/{{ disaster }}" class="logout-btn">Back</a>
+
+<h2>{{ disaster }} – Exercises</h2>
+
+<div class="exercise-grid">
+{% for i in range(1,11) %}
+    <a href="/simulation/{{ disaster }}/exercise/{{ i }}" class="exercise-box">
+        Exercise {{ i }}
+        <span>20 Questions</span>
+    </a>
+{% endfor %}
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

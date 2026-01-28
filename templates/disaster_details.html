@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ disaster }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page-container">
+<div class="card dashboard">
+
+<a href="/user" class="logout-btn">Back</a>
+
+<h2>{{ disaster }} – Disaster Preparedness</h2>
+
+<div class="info-card">
+    <h3>📘 Overview</h3>
+    <p>{{ details[0] }}</p>
+</div>
+
+<div class="info-card">
+    <h3>⚠ Causes</h3>
+    <ul>
+        {% for c in details[1].split(',') %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="info-card">
+    <h3>💥 Impacts</h3>
+    <ul>
+        {% for i in details[2].split(',') %}
+        <li>{{ i }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="info-card highlight">
+    <h3>📖 Case Study</h3>
+    <p>{{ details[3] }}</p>
+</div>
+
+<div class="two-column">
+    <div class="info-card success">
+        <h3>✅ Do’s</h3>
+        <ul>
+            {% for d in details[5].split(';') %}
+            <li>{{ d }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="info-card danger">
+        <h3>❌ Don’ts</h3>
+        <ul>
+            {% for d in details[6].split(';') %}
+            <li>{{ d }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<a href="/simulation/{{ disaster }}/exercises" class="top-btn">
+    Start Exercises →
+</a>
+
+</div>
+</div>
+
+</body>
+</html>

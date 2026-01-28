@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ disaster }} – Exercise {{ exercise }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+
+
+<!-- ===== PAGE CONTENT ===== -->
+<div class="page-container">
+<div class="card dashboard">
+
+<h2>{{ disaster }} – Exercise {{ exercise }}</h2><div class="top-bar">
+    <a href="/simulation/{{ disaster }}/exercises"
+       class="exit-btn"
+       onclick="return confirm('Are you sure you want to exit? Your answers will be lost.')">
+        ❌ Exit Exercise
+    </a>
+</div>
+
+<form method="post">
+
+{% if questions|length == 0 %}
+    <p style="text-align:center;color:red;">
+        No questions available for this exercise.
+    </p>
+{% else %}
+
+{% for q in questions %}
+<div class="question-card">
+
+    <div class="question-header">
+        Question {{ loop.index }}
+    </div>
+
+    <div class="question-text">
+        {{ q[2] }}
+    </div>
+
+    <!-- OPTION A -->
+    <label class="option-box">
+        <input type="radio" name="{{ q[0] }}" value="A" required>
+        <span>{{ q[3] }}</span>
+    </label>
+
+    <!-- OPTION B -->
+    <label class="option-box">
+        <input type="radio" name="{{ q[0] }}" value="B">
+        <span>{{ q[4] }}</span>
+    </label>
+
+    <!-- OPTION C -->
+    <label class="option-box">
+        <input type="radio" name="{{ q[0] }}" value="C">
+        <span>{{ q[5] }}</span>
+    </label>
+
+    <!-- OPTION D -->
+    <label class="option-box">
+        <input type="radio" name="{{ q[0] }}" value="D">
+        <span>{{ q[6] }}</span>
+    </label>
+
+</div>
+{% endfor %}
+
+<button class="submit-btn">Submit Exercise</button>
+
+{% endif %}
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

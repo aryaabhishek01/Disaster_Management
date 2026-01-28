@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page-container">
+<div class="card">
+
+<a href="/user" class="logout-btn">Back</a>
+
+<h2>Send Feedback</h2>
+
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+{% for msg in messages %}
+<div class="success-msg">{{ msg }}</div>
+{% endfor %}
+{% endwith %}
+
+<form method="post">
+    <textarea name="message" rows="5" placeholder="Write your feedback..." required></textarea>
+    <button>Submit Feedback</button>
+</form>
+
+</div>
+</div>
+
+</body>
+</html>
