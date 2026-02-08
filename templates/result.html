@@ -2,20 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ disaster }} Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Document</title>
 </head>
+
 <body>
-    <div class="page-container">
-  <div class="card">
+
+<div class="page-container">
+<div class="card">
+
     <h2>{{ disaster }} Result</h2>
     <h3 style="text-align:center;">Score: {{ score }} / {{ total }}</h3>
 
+    <hr>
+
+    <h3>Answer Review</h3>
+
+    {% for r in review %}
+    <div class="result-card {{ r.status }}">
+
+        <p><strong>Q{{ loop.index }}:</strong> {{ r.question }}</p>
+
+        <p>
+            Your Answer:
+            <span class="{% if r.status == 'correct' %}correct-text{% else %}wrong-text{% endif %}">
+                {{ r.user_answer }}
+            </span>
+        </p>
+
+        {% if r.status == "wrong" %}
+        <p>
+            Correct Answer:
+            <span class="correct-text">
+                {{ r.correct_answer }}
+            </span>
+        </p>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+    <br>
+
     <a href="/user">
-      <button>Back to Dashboard</button>
+        <button class="submit-btn">Back to Dashboard</button>
     </a>
-  </div>
+
+</div>
 </div>
 
 </body>

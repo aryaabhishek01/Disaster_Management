@@ -18,6 +18,7 @@
         </div>
 
         <div class="right-top">
+
             <!-- 🔔 Notification Bell -->
             <div class="notification-wrapper">
                 <span class="bell">🔔</span>
@@ -64,6 +65,24 @@
       {% else %}
         <canvas id="progressChart"></canvas>
       {% endif %}
+    </div>
+
+    <!-- ✅ AI RECOMMENDATION INSIDE DASHBOARD -->
+    <div class="dashboard-card ai-card">
+        <h3>🤖 AI Recommendation</h3>
+
+        {% if recommendation %}
+            <p>You need improvement in:</p>
+            <h2>{{ recommendation }}</h2>
+
+            <a href="/simulation/{{ recommendation }}">
+                <button class="submit-btn">
+                    Start Recommended Simulation
+                </button>
+            </a>
+        {% else %}
+            <p>Complete a simulation to get recommendation.</p>
+        {% endif %}
     </div>
 
   </div>

@@ -5,20 +5,24 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
 <div class="page-container">
-  <div class="card dashboard">
+<div class="card dashboard">
 
-    <a href="/logout" class="logout-btn">Logout</a>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <h2>Admin Dashboard</h2>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
 
-    <h2>Admin Dashboard</h2>
-
-    <!-- USERS SECTION -->
+    <!-- ================= USERS SECTION ================= -->
     <div class="dashboard-card">
         <h3>Registered Users</h3>
 
-        <table>
+        <table class="admin-table">
+
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -33,40 +37,53 @@
                 <td>{{ u[3] }}</td>
                 <td>
                     <a href="/reset/{{ u[0] }}">Reset</a> |
-                    <a href="/delete/{{ u[0] }}">Delete</a>
+                    <a href="/delete/{{ u[0] }}"
+                       onclick="return confirm('Delete this user?')">
+                       Delete
+                    </a>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </div>
 
-    <!-- FEEDBACK SECTION -->
+    <!-- ================= FEEDBACK SECTION ================= -->
     <div class="dashboard-card">
         <h3>User Feedback</h3>
 
-        {% for f in feedbacks %}
-        <p><b>{{ f[1] }}</b>: {{ f[2] }}</p>
+        {% if feedbacks %}
+            {% for f in feedbacks %}
+                <p><b>{{ f[1] }}</b>: {{ f[2] }}</p>
 
-        <form action="/reply/{{ f[0] }}" method="post">
-            <input name="reply" placeholder="Reply to user" required>
-            <button>Send Reply</button>
-        </form>
-        <a href="/ignore-feedback/{{ f[0] }}"
-   onclick="return confirm('Ignore and delete this feedback?')">
-   Ignore
-</a>
-        <hr>
-        {% endfor %}
+                <form action="/reply/{{ f[0] }}" method="post">
+                    <input name="reply"
+                           placeholder="Reply to user"
+                           required>
+                    <button>Send Reply</button>
+                </form>
+
+                <a href="/ignore-feedback/{{ f[0] }}"
+                   onclick="return confirm('Ignore and delete this feedback?')">
+                   Ignore
+                </a>
+
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No feedback available.</p>
+        {% endif %}
     </div>
 
-    <!-- SCORES SECTION -->
+    <!-- ================= SIMULATION RESULTS ================= -->
     <div class="dashboard-card">
         <h3>Simulation Results</h3>
 
-        <table>
+       <table class="admin-table">
+
             <tr>
                 <th>Student</th>
                 <th>Disaster</th>
+                <th>Exercise</th>
                 <th>Score</th>
                 <th>Total</th>
                 <th>Date</th>
@@ -79,13 +96,48 @@
                 <td>{{ s[2] }}</td>
                 <td>{{ s[3] }}</td>
                 <td>{{ s[4] }}</td>
+                <td>{{ s[5] }}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
 
-  </div>
+    <!-- ================= AI ANALYTICS GRAPH ================= -->
+    <div class="dashboard-card">
+        <h3>📊 AI Analytics – Weak Disaster Areas</h3>
+        <canvas id="analyticsChart"></canvas>
+    </div>
+
 </div>
+</div>
+
+<!-- ================= CHART JS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('analyticsChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ analytics_labels | tojson }},
+        datasets: [{
+            label: 'Average Score (%)',
+            data: {{ analytics_values | tojson }},
+            backgroundColor: '#1976d2'
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+</script>
 
 </body>
 </html>
