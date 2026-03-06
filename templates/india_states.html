@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>India States</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-container">
+<div class="card">
+
+<h2 class="page-title">Select Indian State</h2>
+
+<div class="state-grid">
+
+{% for state in states %}
+
+<a href="/india/{{ state }}" class="state-card">
+{{ state }}
+</a>
+
+{% endfor %}
+
+</div>
+
+<a href="/user" class="back-btn">⬅ Back to Dashboard</a>
+
+</div>
+</div>
+
+</body>
+</html>

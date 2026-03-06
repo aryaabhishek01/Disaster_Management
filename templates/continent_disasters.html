@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ continent }} Disasters</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-container">
+<div class="card">
+
+<h2 class="page-title">🌍 Disaster Simulations in {{ continent }}</h2>
+
+{% if disasters %}
+
+<div class="disaster-grid">
+
+{% for d in disasters %}
+
+<a href="/simulation/{{ d[0] }}" class="disaster-card">
+{{ d[0] }}
+</a>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<p>No disaster simulations available for this continent.</p>
+
+{% endif %}
+
+<a href="/continents" class="back-btn">⬅ Back to Continents</a>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>General Disaster Simulations</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-container">
+<div class="card dashboard">
+
+<h2>🌍 General Disaster Simulations</h2>
+
+{% if disasters %}
+
+<div class="simulation-grid">
+
+{% for d in disasters %}
+
+<a href="/simulation/{{ d[0] }}" class="sim-card">
+{{ d[0] }}
+</a>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<p>No simulations available.</p>
+
+{% endif %}
+
+<a href="/user" class="back-btn">⬅ Back to Dashboard</a>
+
+</div>
+</div>
+
+</body>
+</html>

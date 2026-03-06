@@ -9,109 +9,162 @@
 <body>
 
 <div class="page-container">
-  <div class="card dashboard">
+<div class="card dashboard">
 
-    <!-- ✅ SINGLE TOP BAR -->
-    <div class="top-bar">
-        <div class="left-top">
-            <a href="/feedback-page" class="top-btn">Feedback</a>
-        </div>
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
 
-        <div class="right-top">
-
-            <!-- 🔔 Notification Bell -->
-            <div class="notification-wrapper">
-                <span class="bell">🔔</span>
-
-                {% if notifications %}
-                    <span class="dot"></span>
-                {% endif %}
-
-                <div class="notification-dropdown">
-                    {% if notifications %}
-                        {% for n in notifications %}
-                            <div class="notification-item">
-                                <strong>Admin Reply</strong>
-                                <p>{{ n[1] }}</p>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <p class="empty">No notifications</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <a href="/logout" class="logout-btn">Logout</a>
-        </div>
-    </div>
-
-    <h2>User Dashboard</h2>
-
-    <!-- SIMULATION LINKS -->
-    <div class="dashboard-card">
-      <h3>Select Disaster Simulation</h3>
-      <a href="/simulation/Earthquake">🌍 Earthquake</a><br><br>
-      <a href="/simulation/Flood">🌊 Flood</a><br><br>
-      <a href="/simulation/Cyclone">🌪 Cyclone</a><br><br>
-      <a href="/simulation/Fire">🔥 Fire</a>
-    </div>
-
-    <!-- PROGRESS GRAPH -->
-    <div class="dashboard-card">
-      <h3>📊 Your Progress</h3>
-
-      {% if disasters|length == 0 %}
-        <p>No simulations attempted yet.</p>
-      {% else %}
-        <canvas id="progressChart"></canvas>
-      {% endif %}
-    </div>
-
-    <!-- ✅ AI RECOMMENDATION INSIDE DASHBOARD -->
-    <div class="dashboard-card ai-card">
-        <h3>🤖 AI Recommendation</h3>
-
-        {% if recommendation %}
-            <p>You need improvement in:</p>
-            <h2>{{ recommendation }}</h2>
-
-            <a href="/simulation/{{ recommendation }}">
-                <button class="submit-btn">
-                    Start Recommended Simulation
-                </button>
-            </a>
-        {% else %}
-            <p>Complete a simulation to get recommendation.</p>
-        {% endif %}
-    </div>
-
-  </div>
+<div class="left-top">
+<a href="/feedback-page" class="top-btn">Feedback</a>
 </div>
 
-<!-- CHART.JS -->
+<div class="right-top">
+
+<!-- Notification -->
+<div class="notification-wrapper">
+<span class="bell">🔔</span>
+
+{% if notifications %}
+<span class="dot"></span>
+{% endif %}
+
+<div class="notification-dropdown">
+{% if notifications %}
+{% for n in notifications %}
+<div class="notification-item">
+<strong>Admin Reply</strong>
+<p>{{ n[1] }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p class="empty">No notifications</p>
+{% endif %}
+</div>
+</div>
+
+<a href="/logout" class="logout-btn">Logout</a>
+
+</div>
+</div>
+
+<h2>User Dashboard</h2>
+
+<!-- ================= SIMULATION NAVIGATION ================= -->
+<div class="dashboard-card">
+
+<h3>🌍 Disaster Simulation Explorer</h3>
+
+<p>Select how you want to explore simulations.</p>
+
+<div class="simulation-grid">
+
+<a href="/general" class="sim-card">
+🌐 <br>
+General Simulations
+</a>
+
+<a href="/continents" class="sim-card">
+🌏 <br>
+Continent Simulations
+</a>
+
+<a href="/india" class="sim-card">
+🇮🇳 <br>
+India State Simulations
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ================= USER PROGRESS GRAPH ================= -->
+<div class="dashboard-card">
+
+<h3>📊 Your Progress</h3>
+
+{% if disasters %}
+<canvas id="progressChart"></canvas>
+{% else %}
+<p>No simulations attempted yet.</p>
+{% endif %}
+
+</div>
+
+
+<!-- ================= AI RECOMMENDATION ================= -->
+<div class="dashboard-card ai-card">
+
+<h3>🤖 AI Recommendation</h3>
+
+{% if recommendation %}
+
+<p>You need improvement in:</p>
+
+<h2>{{ recommendation }}</h2>
+
+<a href="/simulation/{{ recommendation }}">
+<button class="submit-btn">
+Start Recommended Simulation
+</button>
+</a>
+
+{% else %}
+
+<p>Complete a simulation to get recommendation.</p>
+
+{% endif %}
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ================= CHART JS ================= -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-{% if disasters|length > 0 %}
+
+{% if disasters %}
+
 const ctx = document.getElementById('progressChart');
 
 new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: {{ disasters | tojson }},
-        datasets: [{
-            label: 'Score (%)',
-            data: {{ percentages | tojson }}
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true, max: 100 }
-        }
-    }
+
+type: 'bar',
+
+data: {
+labels: {{ disasters | tojson }},
+datasets: [{
+label: 'Your Score (%)',
+data: {{ percentages | tojson }},
+backgroundColor: '#1976d2',
+borderRadius: 6
+}]
+},
+
+options: {
+responsive: true,
+
+plugins: {
+legend: {
+display: true
+}
+},
+
+scales: {
+y: {
+beginAtZero: true,
+max: 100
+}
+}
+}
+
 });
+
 {% endif %}
+
 </script>
 
 </body>

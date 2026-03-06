@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Continent</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-container">
+<div class="card">
+
+<h2 class="page-title">🌏 Select Continent</h2>
+
+<div class="continent-grid">
+
+{% for c in continents %}
+
+<a href="/continent/{{ c }}" class="continent-card">
+{{ c }}
+</a>
+
+{% endfor %}
+
+</div>
+
+<a href="/user" class="back-btn">⬅ Back</a>
+
+</div>
+</div>
+
+</body>
+</html>

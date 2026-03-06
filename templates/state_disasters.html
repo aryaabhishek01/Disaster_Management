@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ state }} Disasters</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-container">
+<div class="card">
+
+<h2 class="page-title">⚠ Disaster Simulations in {{ state }}</h2>
+
+{% if disasters %}
+
+<div class="disaster-grid">
+
+{% for d in disasters %}
+
+<a href="/simulation/{{ d[0] }}" class="disaster-card">
+{{ d[0] }}
+</a>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<p>No disaster simulations available for this state.</p>
+
+{% endif %}
+
+<a href="/india" class="back-btn">⬅ Back to States</a>
+
+</div>
+</div>
+
+</body>
+</html>

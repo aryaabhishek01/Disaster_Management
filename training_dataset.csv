@@ -3,48 +3,88 @@ user_id,disaster_type,exercise_number,score,total,percentage,next_recommended
 1,Flood,1,8,20,40,Flood
 1,Cyclone,1,12,20,60,Flood
 1,Fire,1,16,20,80,Flood
+1,Tsunami,1,10,20,50,Flood
+1,Landslide,1,14,20,70,Flood
+1,Drought,1,9,20,45,Flood
+1,Heatwave,1,13,20,65,Flood
 
 2,Earthquake,1,6,20,30,Earthquake
 2,Flood,1,14,20,70,Earthquake
 2,Cyclone,1,15,20,75,Earthquake
 2,Fire,1,18,20,90,Earthquake
+2,Tsunami,1,7,20,35,Earthquake
+2,Landslide,1,11,20,55,Earthquake
+2,Drought,1,10,20,50,Earthquake
+2,Wildfire,1,12,20,60,Earthquake
 
 3,Earthquake,1,18,20,90,Cyclone
 3,Flood,1,16,20,80,Cyclone
 3,Cyclone,1,7,20,35,Cyclone
 3,Fire,1,14,20,70,Cyclone
+3,Tsunami,1,12,20,60,Cyclone
+3,Landslide,1,9,20,45,Cyclone
+3,Heatwave,1,11,20,55,Cyclone
+3,Tornado,1,10,20,50,Cyclone
 
 4,Earthquake,1,10,20,50,Flood
 4,Flood,1,9,20,45,Flood
 4,Cyclone,1,13,20,65,Flood
 4,Fire,1,17,20,85,Flood
+4,Tsunami,1,8,20,40,Flood
+4,Landslide,1,12,20,60,Flood
+4,Drought,1,11,20,55,Flood
+4,Wildfire,1,14,20,70,Flood
 
 5,Earthquake,1,19,20,95,Cyclone
 5,Flood,1,17,20,85,Cyclone
 5,Cyclone,1,6,20,30,Cyclone
 5,Fire,1,18,20,90,Cyclone
+5,Tsunami,1,9,20,45,Cyclone
+5,Landslide,1,11,20,55,Cyclone
+5,Heatwave,1,13,20,65,Cyclone
+5,Blizzard,1,10,20,50,Cyclone
 
 6,Earthquake,1,8,20,40,Earthquake
 6,Flood,1,12,20,60,Earthquake
 6,Cyclone,1,14,20,70,Earthquake
 6,Fire,1,16,20,80,Earthquake
+6,Tsunami,1,9,20,45,Earthquake
+6,Drought,1,11,20,55,Earthquake
+6,Wildfire,1,10,20,50,Earthquake
+6,Pandemic,1,12,20,60,Earthquake
 
 7,Earthquake,1,13,20,65,Fire
 7,Flood,1,15,20,75,Fire
 7,Cyclone,1,12,20,60,Fire
 7,Fire,1,7,20,35,Fire
+7,Tsunami,1,11,20,55,Fire
+7,Landslide,1,14,20,70,Fire
+7,Heatwave,1,10,20,50,Fire
+7,Volcanic Eruption,1,9,20,45,Fire
 
 8,Earthquake,1,11,20,55,Flood
 8,Flood,1,6,20,30,Flood
 8,Cyclone,1,15,20,75,Flood
 8,Fire,1,17,20,85,Flood
+8,Tsunami,1,8,20,40,Flood
+8,Drought,1,9,20,45,Flood
+8,Wildfire,1,13,20,65,Flood
+8,Avalanche,1,10,20,50,Flood
 
 9,Earthquake,1,17,20,85,Earthquake
 9,Flood,1,18,20,90,Earthquake
 9,Cyclone,1,16,20,80,Earthquake
 9,Fire,1,5,20,25,Fire
+9,Tsunami,1,7,20,35,Fire
+9,Landslide,1,10,20,50,Fire
+9,Heatwave,1,11,20,55,Fire
+9,Tornado,1,9,20,45,Fire
 
 10,Earthquake,1,9,20,45,Earthquake
 10,Flood,1,14,20,70,Earthquake
 10,Cyclone,1,15,20,75,Earthquake
 10,Fire,1,18,20,90,Earthquake
+10,Tsunami,1,8,20,40,Earthquake
+10,Drought,1,10,20,50,Earthquake
+10,Wildfire,1,12,20,60,Earthquake
+10,Pandemic,1,11,20,55,Earthquake
