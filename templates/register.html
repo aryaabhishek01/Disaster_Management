@@ -10,6 +10,17 @@
   <div class="card">
     <h2>User Registration</h2>
 
+    <!-- Flash Message -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p style="color:red; text-align:center; font-weight:bold;">
+            {{ message }}
+          </p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <form method="post">
       <input name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email" required>

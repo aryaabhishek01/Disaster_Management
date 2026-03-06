@@ -36,10 +36,12 @@
                 <td>{{ u[2] }}</td>
                 <td>{{ u[3] }}</td>
                 <td>
-                    <a href="/reset/{{ u[0] }}">Reset</a> |
-                    <a href="/delete/{{ u[0] }}"
-                       onclick="return confirm('Delete this user?')">
-                       Delete
+                    <form action="/reset-password/{{ u[0] }}" method="post" style="display:inline;">
+                    <input type="password" name="password" placeholder="New Password" required>
+                    <button type="submit">Reset</button>
+                    </form>
+                    <a href="/delete-user/{{ u[0] }}"onclick="return confirm('Delete this user?')">
+                       <button type="submit">Delete</button></a>
                     </a>
                 </td>
             </tr>
